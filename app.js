@@ -27,7 +27,11 @@ var budgetController = (function() {
             var newItem, ID;
 
             // Create new ID from ID of last element incremented by 1
-            ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
 
             // Create new instance based on type
             if (type === 'exp') {
