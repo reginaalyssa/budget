@@ -1,11 +1,12 @@
 var budgetController = (function() {
-    var Expense = function(id, description, value) {
+
+    var Income = function(id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
     };
 
-    var Income = function(id, description, value) {
+    var Expense = function(id, description, value) {
         this.id = id;
         this.description = description;
         this.value = value;
@@ -23,12 +24,12 @@ var budgetController = (function() {
 
     var data = {
         allItems: {
-            exp: [],
-            inc: []
+            inc: [],
+            exp: []
         },
         totals: {
-            exp: 0,
-            inc: 0
+            inc: 0,
+            exp: 0
         },
         budget: 0,
         percentage: -1
@@ -46,10 +47,10 @@ var budgetController = (function() {
             }
 
             // Create new instance based on type
-            if (type === 'exp') {
-                newItem = new Expense(ID, des, val);
-            } else if (type === 'inc') {
+            if (type === 'inc') {
                 newItem = new Income(ID, des, val);
+            } else if (type === 'exp') {
+                newItem = new Expense(ID, des, val);
             }
 
             // Push the new item into our data structure
@@ -61,8 +62,8 @@ var budgetController = (function() {
 
         calculateBudget: function() {
             // Calculate total income and expenses
-            calculateTotal('exp');
             calculateTotal('inc');
+            calculateTotal('exp');
 
             // Calculate budget (income - expenses)
             data.budget = data.totals.inc - data.totals.exp;
@@ -115,12 +116,12 @@ var UIController = (function() {
             var html, newHTML, element;
 
             // Create HTML string with placeholder text
-            if (type === 'exp') {
-                element = DOMStrings.expenseContainer;
-                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
-            } else if (type === 'inc') {
+            if (type === 'inc') {
                 element = DOMStrings.incomeContainer;
                 html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">+ %value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+            } else if (type === 'exp') {
+                element = DOMStrings.expenseContainer;
+                html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }
 
             // Replace placeholder text with actual data
