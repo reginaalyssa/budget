@@ -29,7 +29,8 @@ var budgetController = (function() {
         totals: {
             exp: 0,
             inc: 0
-        }
+        },
+        budget: 0
     };
 
     return {
@@ -55,6 +56,22 @@ var budgetController = (function() {
 
             // Return newly created item
             return newItem;
+        },
+
+        calculateBudget: function() {
+            // Calculate total income and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
+
+            // Calculate budget (income - expenses)
+            data.budget = data.totals.income = data.totals.expenses;
+
+            // Calculate percentage of income spent
+
+        },
+
+        testing: function() {
+            console.log(data);
         }
     };
 
