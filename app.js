@@ -53,10 +53,10 @@ var budgetController = (function() {
 var UIController = (function() {
 
     var DOMStrings = {
-        inputType: '.add_type',
-        inputDescription: '.add_description',
-        inputValue: '.add_value',
-        inputButton: '.add_btn'
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputButton: '.add__btn'
     };
 
     return {
@@ -76,7 +76,7 @@ var UIController = (function() {
 var controller = (function (budgetCtrl, UICtrl) {
 
     var setupEventListeners = function() {
-        var DOMStrings = UICtrl.getDOMStrings()
+        var DOMStrings = UICtrl.getDOMStrings();
 
         document.querySelector(DOMStrings.inputButton).addEventListener('click', ctrlAddItem);
 
