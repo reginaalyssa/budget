@@ -79,7 +79,6 @@ var UIController = (function() {
                 html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             } else if (type === 'inc') {
                 element = DOMStrings.incomeContainer;
-
                 html = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">+ %value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }
 
@@ -90,6 +89,19 @@ var UIController = (function() {
 
             // Insert HTML to DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
+        },
+
+        clearFields: function() {
+            var fields, fieldsArr;
+            fields = document.querySelectorAll(DOMStrings.inputDescription + ', ' + DOMStrings.inputValue);
+
+            fieldsArr = Array.prototype.slice.call(fields);
+
+            fieldsArr.forEach(function(current, index, array) {
+                current.value = "";
+            });
+
+            fieldsArr[0].focus();
         },
 
         getDOMStrings: function() {
