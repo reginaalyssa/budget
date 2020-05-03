@@ -37,20 +37,20 @@ var budgetController = (function() {
 
     return {
         addItem: function(type, des, val) {
-            var newItem, ID;
+            var newItem, id;
 
             // Create new ID from ID of last element incremented by 1
             if (data.allItems[type].length > 0) {
-                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+                id = data.allItems[type][data.allItems[type].length - 1].id + 1;
             } else {
-                ID = 0;
+                id = 0;
             }
 
             // Create new instance based on type
             if (type === 'inc') {
-                newItem = new Income(ID, des, val);
+                newItem = new Income(id, des, val);
             } else if (type === 'exp') {
-                newItem = new Expense(ID, des, val);
+                newItem = new Expense(id, des, val);
             }
 
             // Push the new item into our data structure
