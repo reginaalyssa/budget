@@ -21,6 +21,10 @@ var budgetController = (function() {
         }
     };
 
+    Expense.prototype.getPercentage = function() {
+        return this.percentage;
+    };
+
     var calculateTotal = function(type) {
         var sum = 0;
 
