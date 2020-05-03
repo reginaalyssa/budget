@@ -209,12 +209,20 @@ var controller = (function (budgetCtrl, UICtrl) {
         // Calculate the budget
         budgetCtrl.calculateBudget();
 
-        // Return the budget
+        // Read the new budget
         var budget = budgetCtrl.getBudget();
 
         // Display the budget on the UI
         UICtrl.displayBudget(budget);
     };
+
+    var updatePercentages = function() {
+        // Calculate new percentages
+
+        // Read new percentages
+
+        // Display new percentages on the UI
+    }
 
     var ctrlAddItem = function() {
         var input, newItem;
