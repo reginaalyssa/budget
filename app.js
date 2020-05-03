@@ -103,6 +103,12 @@ var budgetController = (function() {
             }
         },
 
+        calculatePercentage: function() {
+            data.allItems.exp.forEach(function(current) {
+                current.calcPercentage(data.totals.inc);
+            });
+        },
+
         getBudget: function() {
             return {
                 budget: data.budget,
