@@ -271,6 +271,9 @@ var controller = (function (budgetCtrl, UICtrl) {
 
             // Calculate and update the budget
             updateBudget();
+
+            // Calculate and update percentages
+            updatePercentages();
         }
     };
 
@@ -293,6 +296,9 @@ var controller = (function (budgetCtrl, UICtrl) {
 
         // Calculate and update the budget
         updateBudget();
+
+        // Calculate and update percentages
+        updatePercentages();
     };
 
     return {
